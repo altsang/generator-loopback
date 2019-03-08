@@ -10,6 +10,7 @@ var url = require('url');
 var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
 var loadSwaggerSpecs = require('./spec-loader');
+var uuidv4 = require('uuid/v4');
 
 var workspace = require('loopback-workspace');
 var wsModels = workspace.models;
@@ -274,6 +275,7 @@ module.exports = class SwaggerGenerator extends ActionsMixin(yeoman) {
         // update the model definition
         wsModels.ModelDefinition.upsert(modelDef, processResult);
       } else if (self.selectedModels[modelDef.name] === SELECTED_FOR_CREATE) {
+				modelDef.lunchbadgerId = uuidv4();
         self.log(chalk.green(g.f('Creating model definition for %s...',
           modelDef.name)));
         wsModels.ModelDefinition.create(modelDef, processResult);
