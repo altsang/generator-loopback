@@ -10,7 +10,7 @@ var url = require('url');
 var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
 var loadSwaggerSpecs = require('./spec-loader');
-var uuidv4 = require('uuid/v4);
+var uuidv4 = require('uuid/v4');
 
 var workspace = require('loopback-workspace');
 var wsModels = workspace.models;
